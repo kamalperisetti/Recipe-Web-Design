@@ -1,0 +1,168 @@
+.recipe-container {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  width: 305px;
+  height: 315px;
+  border-radius: 16px;
+  box-shadow: 0px 3px 8px -1px #3232470d;
+  margin: 10px;
+  box-shadow: 0px 0px 1px 0px #0c1a4b3d;
+}
+@media screen and (max-width: 768px) {
+  .recipe-container {
+    width: 160px;
+    height: 180px;
+  }
+}
+.recipe-image-container {
+  align-self: center;
+}
+@media screen and (max-width: 768px) {
+}
+.recipe-image {
+  width: 299px;
+  height: 200px;
+  border-radius: 16px;
+}
+@media screen and (max-width: 768px) {
+  .recipe-image {
+    width: 100px;
+    height: 100px;
+  }
+}
+.details-con {
+  margin-left: 10px;
+  align-self: center;
+}
+@media screen and (max-width: 768px) {
+  .details-con {
+    margin-left: 10px;
+    align-self: center;
+  }
+}
+.time-con {
+  display: flex;
+  width: 300px;
+}
+@media screen and (max-width: 768px) {
+  .time-con {
+    display: flex;
+    max-width: 70px;
+  }
+}
+.icons-con {
+  display: flex;
+  gap: 10px;
+}
+@media screen and (max-width: 768px) {
+  .icons-con {
+    display: flex;
+    gap: 6px;
+  }
+}
+.star-icon {
+  color: #eaaa00;
+}
+@media screen and (max-width: 768px) {
+  .rating {
+    font-size: 10px;
+  }
+}
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+}
+@media screen and (max-width: 768px) {
+  .title-container {
+    width: 90px;
+  }
+}
+.link-container {
+  display: flex;
+  gap: 50px;
+}
+@media screen and (max-width: 768px) {
+  .link-container {
+    gap: 5px;
+  }
+}
+.time {
+  color: #dc582a;
+  width: 261px;
+  height: 27px;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27.3px;
+  text-align: left;
+  margin-top: 0px;
+}
+@media screen and (max-width: 768px) {
+  .time {
+    color: #dc582a;
+    width: 90px;
+    height: 27px;
+    font-family: Inter;
+    font-size: 10px;
+  }
+}
+.title {
+  margin: 4px 0px;
+}
+@media screen and (max-width: 768px) {
+  .title {
+    margin: 4px 0px;
+    font-size: 12px;
+  }
+}
+a {
+  text-decoration: none;
+  color: #a52a2a;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 15px;
+}
+@media screen and (max-width: 768px) {
+  a {
+    align-items: center;
+    gap: 5px;
+    font-size: 8px;
+  }
+}
+.heart-btn {
+  border: none;
+  background-color: transparent;
+  margin-left: 0px;
+  padding: 0px;
+}
+@media screen and (max-width: 768px) {
+}
+.red-heart {
+  color: red;
+  font-size: 11px;
+}
+@media screen and (max-width: 768px) {
+}
+.popup-container {
+  width: 350px;
+  height: 300px;
+  position: fixed;
+  right: 100px;
+  top: 30px;
+  right: 40%;
+}
+@media screen and (max-width: 768px) {
+}
+.comment-btn {
+  background-color: rgb(85, 85, 219);
+  border: none;
+  padding: 8px;
+  color: #ffffff;
+  border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+}
