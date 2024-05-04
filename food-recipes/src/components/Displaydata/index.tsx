@@ -78,10 +78,12 @@ const DisplayData = (props: any) => {
             >
               <div className="popup-container">
                 <textarea
-                  cols={80}
-                  rows={40}
+                  cols={50}
+                  rows={50}
                   onChange={(e) => setCommnetText(e.target.value)}
-                ></textarea>
+                >
+                  Add Comments
+                </textarea>
                 <button className="comment-btn" onClick={addComment}>
                   Add Commenet & Close
                 </button>
