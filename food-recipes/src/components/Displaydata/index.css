@@ -11,8 +11,9 @@
 }
 @media screen and (max-width: 768px) {
   .recipe-container {
-    width: 94px;
-    height: 140px;
+    width: 80px;
+    height: 137px;
+    margin: 5px;
   }
 }
 .recipe-image-container {
@@ -27,8 +28,8 @@
 }
 @media screen and (max-width: 768px) {
   .recipe-image {
-    width: 89px;
-    height: 88px;
+    width: 75px;
+    height: 75px;
   }
 }
 .details-con {
@@ -39,7 +40,7 @@
 @media screen and (max-width: 768px) {
   .details-con {
     margin-left: 10px;
-    width: 100px;
+    width: 86px;
     align-self: center;
   }
 }
@@ -51,7 +52,7 @@
 @media screen and (max-width: 768px) {
   .time-con {
     display: flex;
-    width: 90px;
+    width: 72px;
     margin-top: 0px;
   }
 }
@@ -77,7 +78,7 @@
 }
 @media screen and (max-width: 768px) {
   .rating {
-    font-size: 8px;
+    font-size: 6px;
   }
 }
 .title-container {
@@ -88,7 +89,7 @@
 }
 @media screen and (max-width: 768px) {
   .title-container {
-    width: 90px;
+    width: 73px;
   }
 }
 .link-container {
@@ -97,8 +98,8 @@
 }
 @media screen and (max-width: 768px) {
   .link-container {
-    gap: 5px;
-    width: 90px;
+    gap: 9px;
+    width: 75px;
   }
 }
 .time {
@@ -115,7 +116,7 @@
 @media screen and (max-width: 768px) {
   .time {
     color: #dc582a;
-    width: 55px;
+    width: 54px;
     height: 26px;
     font-size: 8px;
   }
@@ -129,7 +130,7 @@
 @media screen and (max-width: 768px) {
   .title {
     margin: 4px 0;
-    font-size: 7px;
+    font-size: 6px;
   }
 }
 a {
@@ -156,6 +157,9 @@ a {
   margin-bottom: 0px;
 }
 @media screen and (max-width: 768px) {
+  .heart-btn {
+    font-size: 8px;
+  }
 }
 .red-heart {
   color: red;

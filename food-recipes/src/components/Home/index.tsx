@@ -10,7 +10,10 @@ type Data = {
   strYoutube: string;
   idMeal: string;
 };
-const Home = (props: any) => {
+type Search = {
+  searched: string;
+};
+const Home = (props: Search) => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);

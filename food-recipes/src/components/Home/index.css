@@ -11,7 +11,7 @@
 @media screen and (max-width: 768px) {
   .image-slide {
     height: 146px;
-    width: 328px;
+    width: 100%;
     margin-top: 10px;
   }
 }
@@ -202,7 +202,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 250px;
+    width: 100%;
     padding: 0px;
   }
 }
@@ -231,7 +231,7 @@
 }
 @media screen and (max-width: 768px) {
   .sidebar-container {
-    min-width: 10px;
+    width: 70px;
     display: flex;
     flex-direction: column;
     gap: 10px;

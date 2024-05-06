@@ -19,12 +19,25 @@ const DisplayData = (props: any) => {
   const [heartIcon, setHeartIcon] = useState(false);
   const [popup, setPopup] = useState(false);
   const [commentText, setCommnetText] = useState("");
+  // const [likedRecipes, setLikedRecipes] = useState<Data[]>([]);
   const { details } = props;
   // console.log(details);
+  // console.log(likedRecipes);
+
   const changeHeart = () => {
     setHeartIcon((prevState) => !prevState);
+    // setLikedRecipes((prevState) => [...prevState, likedDetails]);
   };
-
+  // const changeHeart = (d: Data) => {
+  //   setHeartIcon((prevState) => !prevState);
+  //   if (!heartIcon) {
+  //     setLikedRecipes((prevState) => [...prevState, d]);
+  //   } else {
+  //     setLikedRecipes((prevState) =>
+  //       prevState.filter((recipe) => recipe.idMeal !== d.idMeal)
+  //     );
+  //   }
+  // };
   const addComment = () => {
     const comment = [];
     console.log(commentText);
