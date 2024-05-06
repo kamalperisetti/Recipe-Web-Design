@@ -1,8 +1,6 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import "./index.css";
 import DisplayData from "../Displaydata";
-// import Navbar from "../Navbar";
-// import { userSearch } from "../Navbar/index.tsx";
 
 type Data = {
   strMeal: string;
@@ -12,12 +10,18 @@ type Data = {
   strYoutube: string;
   idMeal: string;
 };
-const Home = () => {
+const Home = (props: any) => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
-  const [isChecked, setIsChecked] = useState<boolean>(false);
-  //   const searchInput = useContext(userSearch);
-  //   console.log(searchInput, "KII");
+  const [selectedData, setSelectedData] = useState<string[]>([]);
+  const { searched } = props;
+  useEffect(() => {
+    const searchedData = fetchedData.filter((each) =>
+      each.strMeal.toLowerCase().includes(searched.toLowerCase())
+    );
+    setFilterdData(searchedData);
+  }, [searched]);
+
   useEffect(() => {
     getTheData();
   }, []);
@@ -31,7 +35,6 @@ const Home = () => {
       const data = await response.json();
       if (response.ok) {
         setFetchedData(data.meals);
-        setFilterdData(data.meals);
       } else {
         console.log(response);
       }
@@ -40,92 +43,31 @@ const Home = () => {
     }
   };
 
-  const getSeaFood = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked);
-    console.log(isChecked);
-    if (!isChecked) {
-      const filtered = fetchedData.filter(
-        (each) => each.strCategory === "Seafood"
-      );
-      setFilterdData(filtered);
+  const getTheValue = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedData((prevState) => [...prevState, e.target.value]);
+      setFilterdData((prev) => [
+        ...prev,
+        ...fetchedData.filter((each) => each.strCategory === e.target.value),
+      ]);
     } else {
-      setFilterdData(fetchedData);
-    }
-  };
-
-  const getSideFood = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked);
-    console.log(isChecked);
-    if (!isChecked) {
-      const filtered = fetchedData.filter(
-        (each) => each.strCategory === "Side"
+      setSelectedData((prevState) =>
+        prevState.filter((each) => each !== e.target.value)
       );
-      setFilterdData(filtered);
-    } else {
-      setFilterdData(fetchedData);
-    }
-  };
-  const getVegFood = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked);
-    console.log(isChecked);
-    if (!isChecked) {
-      const filtered = fetchedData.filter(
-        (each) => each.strCategory === "Vegetarian"
+      setFilterdData((prev) =>
+        prev.filter(
+          (each) =>
+            each.strCategory !== e.target.value &&
+            selectedData.includes(each.strCategory)
+        )
       );
-      setFilterdData(filtered);
-    } else {
-      setFilterdData(fetchedData);
-    }
-  };
-
-  const getPorkFood = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked);
-    console.log(isChecked);
-    if (!isChecked) {
-      const filtered = fetchedData.filter(
-        (each) => each.strCategory === "Pork"
-      );
-      setFilterdData(filtered);
-    } else {
-      setFilterdData(fetchedData);
-    }
-  };
-
-  const getPastaFood = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked);
-    console.log(isChecked);
-    if (!isChecked) {
-      const filtered = fetchedData.filter(
-        (each) => each.strCategory === "Pasta"
-      );
-      setFilterdData(filtered);
-    } else {
-      setFilterdData(fetchedData);
-    }
-  };
-
-  const getBeefFood = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(e.target.checked);
-    console.log(isChecked);
-    if (!isChecked) {
-      const filtered = fetchedData.filter(
-        (each) => each.strCategory === "Beef"
-      );
-      setFilterdData(filtered);
-    } else {
-      setFilterdData(fetchedData);
     }
   };
 
   return (
     <div>
-      {/* <Navbar /> */}
       <div>
         <div className="background-image">
-          {/* <img
-            className="image-slide"
-            src="https://s3-alpha-sig.figma.com/img/7d4e/3fa3/3b0de3e0090f8898c24f6e2c892fee6f?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aVeKlo1H-zR58DjqIQQIKe-CLji1cMJxotREYfAS8HGmieK45f9siTw6HD6gdUV7NNGhXXyutoO25JtKT0ywgIhDmxCKJf9dD5W2dM~6m534Sw8rx3ycY6ebfwb3UDhaEuOD1Fx7tvSc5p~LYcrHtueAPxjhaJzcdLrXYWrHY-7N~zfqawhVt1gK8fqBkxbvsTKc1yMsDVXJgCkKcn1ZGGxbqoCqGWDa4jX7umFLoNu2JkyxnSb5j8pUJAb8NBQJ8P3wibRubmFz1yGNX1~VoSHo8DPBVl5L~nt~74i0usWQa-LxcK5suGueD-B1SchKRPwhx4BVmIncRC-g~JRqiA__"
-          /> */}
           <div className="image-slide">
             <div className="title-con">
               <p className="trending">Treanding now</p>
@@ -145,82 +87,84 @@ const Home = () => {
       <div className="main-container-with-sidebar">
         <div className="sidebar-container">
           <div className="check-con">
-            <input id="seafood" type="checkbox" onChange={getSeaFood} />
+            <input
+              id="seafood"
+              type="checkbox"
+              value="Seafood"
+              onChange={(e) => {
+                getTheValue(e);
+              }}
+            />
             <label htmlFor="seafood">Seafood</label>
           </div>
 
           <div className="check-con">
-            <input id="side" type="checkbox" onChange={getSideFood} />
+            <input
+              id="side"
+              type="checkbox"
+              value="Side"
+              onChange={(e) => {
+                getTheValue(e);
+              }}
+            />
             <label htmlFor="side">Side</label>
           </div>
 
           <div className="check-con">
-            <input id="beff" type="checkbox" onChange={getBeefFood} />
+            <input
+              id="beff"
+              type="checkbox"
+              value="Beef"
+              onChange={(e) => {
+                getTheValue(e);
+              }}
+            />
             <label htmlFor="beff">Beef</label>
           </div>
           <div className="check-con">
-            <input id="veg" type="checkbox" onChange={getVegFood} />
+            <input
+              id="veg"
+              value="Vegetarian"
+              type="checkbox"
+              onChange={(e) => {
+                getTheValue(e);
+              }}
+            />
             <label htmlFor="veg">Vegetarian</label>
           </div>
 
           <div className="check-con">
-            <input id="pork" type="checkbox" onChange={getPorkFood} />
+            <input
+              id="pork"
+              type="checkbox"
+              value="Pork"
+              onChange={(e) => {
+                getTheValue(e);
+              }}
+            />
             <label htmlFor="pork">Pork</label>
           </div>
           <div className="check-con">
-            <input id="pasta" type="checkbox" onChange={getPastaFood} />
+            <input
+              id="pasta"
+              type="checkbox"
+              value="Pasta"
+              onChange={(e) => {
+                getTheValue(e);
+              }}
+            />
             <label htmlFor="pasta">Pasta</label>
           </div>
         </div>
         {fetchedData && (
           <ul className="recipe-main-container">
-            {filterdData.map((each) => (
-              <DisplayData details={each} key={each.idMeal} />
-              //   <li className="recipe-container" key={each.idMeal}>
-              //     <div className="recipe-image-container">
-              //       <img
-              //         className="recipe-image"
-              //         src={each.strMealThumb}
-              //         alt="imagess"
-              //       />
-              //     </div>
-              //     <div className="details-con">
-              //       <div className="title-container">
-              //         <h3 className="title">{each.strMeal}</h3>
-              //         <p>
-              //           <FaStar className="star-icon" /> 4.5
-              //         </p>
-              //       </div>
-              //       <div className="link-container">
-              //         <a href={each.strSource} target="_blank">
-              //           Blog <FaExternalLinkAlt style={{ fontSize: "12px" }} />
-              //         </a>
-              //         <a href={each.strYoutube} target="_blank">
-              //           Preparation Video{" "}
-              //           <FaExternalLinkAlt style={{ fontSize: "12px" }} />
-              //         </a>
-              //       </div>
-
-              //       <div className="time-con">
-              //         <div>
-              //           <p className="time">40 min</p>
-              //         </div>
-              //         <div className="icons-con">
-              //           <button className="heart-btn" onClick={changeHeart}>
-              //             {heartIcon ? (
-              //               <FaHeart className="red-heart" />
-              //             ) : (
-              //               <CiHeart />
-              //             )}
-              //           </button>
-              //           <button className="heart-btn">
-              //             <FaRegComment />
-              //           </button>
-              //         </div>
-              //       </div>
-              //     </div>
-              //   </li>
-            ))}
+            {filterdData.length !== 0
+              ? filterdData.map((each) => (
+                  <DisplayData details={each} key={each.idMeal} />
+                ))
+              : fetchedData.map((each) => (
+                  <DisplayData details={each} key={each.idMeal} />
+                ))}
           </ul>
         )}
       </div>

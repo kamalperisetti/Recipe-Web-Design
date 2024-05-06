@@ -52,10 +52,10 @@ const DisplayData = (props: any) => {
         </div>
         <div className="link-container">
           <a href={details.strSource} target="_blank">
-            Blog <FaExternalLinkAlt style={{ fontSize: "7px" }} />
+            Blog <FaExternalLinkAlt style={{ fontSize: "6px" }} />
           </a>
           <a href={details.strYoutube} target="_blank">
-            Preparation Video <FaExternalLinkAlt style={{ fontSize: "7px" }} />
+            Preparation Video <FaExternalLinkAlt style={{ fontSize: "6px" }} />
           </a>
         </div>
 
@@ -74,16 +74,16 @@ const DisplayData = (props: any) => {
                   <FaRegComment onClick={onCLickComment} />
                 </button>
               }
-              position="right center"
+              modal
+              nested
             >
               <div className="popup-container">
                 <textarea
+                  placeholder="Add Comments here...."
                   cols={50}
                   rows={30}
                   onChange={(e) => setCommnetText(e.target.value)}
-                >
-                  Add Comments
-                </textarea>
+                ></textarea>
                 <button className="comment-btn" onClick={addComment}>
                   Add Commenet & Close
                 </button>

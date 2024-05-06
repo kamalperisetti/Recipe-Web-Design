@@ -11,8 +11,8 @@
 }
 @media screen and (max-width: 768px) {
   .recipe-container {
-    width: 160px;
-    height: 180px;
+    width: 94px;
+    height: 140px;
   }
 }
 .recipe-image-container {
@@ -27,8 +27,8 @@
 }
 @media screen and (max-width: 768px) {
   .recipe-image {
-    width: 100px;
-    height: 100px;
+    width: 89px;
+    height: 88px;
   }
 }
 .details-con {
