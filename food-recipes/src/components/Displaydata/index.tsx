@@ -20,7 +20,7 @@ const DisplayData = (props: any) => {
   const [popup, setPopup] = useState(false);
   const [commentText, setCommnetText] = useState("");
   const { details } = props;
-  console.log(details);
+  // console.log(details);
   const changeHeart = () => {
     setHeartIcon((prevState) => !prevState);
   };
@@ -79,7 +79,7 @@ const DisplayData = (props: any) => {
               <div className="popup-container">
                 <textarea
                   cols={50}
-                  rows={50}
+                  rows={30}
                   onChange={(e) => setCommnetText(e.target.value)}
                 >
                   Add Comments

@@ -1,17 +1,18 @@
 import { IoIosMenu } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import "./index.css";
-// import { useState } from "react";
+// import { useState, useContext } from "react";
+// import { InputData } from "../../App";
+import { useState } from "react";
+// export const userSearch = createContext("");
 
 const Navbar = () => {
-  // const [showSide, setShowSide] = useState(false);
-  const showSidebar = () => {
-    // setShowSide((prevState) => !prevState);
-  };
+  const [searchInput, setSearchInput] = useState<string>("hiiii");
+  // const [searchInput, setSearchInput] = useContext(InputData);
   return (
     <div className="nav-container">
       <div className="logo-container">
-        <IoIosMenu onClick={showSidebar} />
+        <IoIosMenu />
         <img
           className="logo-img"
           src="https://s3-alpha-sig.figma.com/img/e0ef/4f61/967cc7d034dc411ca2013fff2fed228d?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=d3MQUsPYKo4Dubv3o4FvjG4xSRhw~T5yOZAYw6G9V7mZG3PM26Rj81UdjMxiTxgUOxbdq-HHP8fPOhjWVj9e8pQsaCs-XQ093pVdZfjFda9kfjUOFXyj0YP-otR-mQQ6ZvrHPyTqkklOzJMog73XkzJ8uHM174uUExG4BkmTEqXqTM0N1W07~fdWkG8fjoPHiIU8cYEokJxSXg~MeQMlpKgwJrdP1sKtP8~bDhIzsGHJ~zIWs15Lc6VWzb62hCE9ZNL5YtbryzfiPefY04tuqR5XF6rO4EFkdbT0UwXjFbBCIQ6cPgCDK5hUdZw6WuZJI1qyCDW1JG9rPIOz2A-FBg__"
@@ -21,14 +22,18 @@ const Navbar = () => {
 
       <div className="search-container">
         <select className="select">
-          <option>All Categories</option>
-          <option className="option">Veg</option>
-          <option>Non-Veg</option>
+          <option value="All Category">All Categories</option>
+          <option value="Veg" className="option">
+            Veg
+          </option>
+          <option value="Non-veg">Non-Veg</option>
         </select>
         <input
           className="input"
           type="search"
+          value={searchInput}
           placeholder="Search for recipes"
+          onChange={(e) => setSearchInput(e.target.value)}
         />
         <CiSearch className="search-icon" />
       </div>

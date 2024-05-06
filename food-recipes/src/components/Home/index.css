@@ -108,7 +108,7 @@
 .recipes-btn {
   width: 236.8px;
   height: 43px;
-  padding: 15px 29.8px 30px 29px;
+  /* padding: 15px 29.8px 30px 29px; */
   border-radius: 10px;
   background-color: #f6784c;
   border: none;
@@ -127,7 +127,7 @@
 .Share-btn {
   width: 236.8px;
   height: 43px;
-  padding: 15px 29.8px 30px 29px;
+  /* padding: 15px 29.8px 30px 29px; */
   border-radius: 10px;
   background-color: #c4d600;
   color: #ffffff;
@@ -146,7 +146,7 @@
 .Custom-btn {
   width: 236.8px;
   height: 43px;
-  padding: 15px 29.8px 30px 29px;
+  /* padding: 15px 29.8px 30px 29px; */
   border-radius: 10px;
   background-color: #eaaa00;
   color: #ffffff;
@@ -165,7 +165,7 @@
 .Create-btn {
   width: 236.8px;
   height: 43px;
-  padding: 15px 29.8px 30px 29px;
+  /* padding: 15px 29.8px 30px 29px; */
   border-radius: 10px;
   background-color: #ed8b00;
   color: #ffffff;
@@ -184,7 +184,7 @@
 .Cooking-btn {
   width: 236.8px;
   height: 43px;
-  padding: 15px 29.8px 30px 29px;
+  /* padding: 15px 29.8px 30px 29px; */
   border-radius: 10px;
   border: none;
   background-color: #84bd00;

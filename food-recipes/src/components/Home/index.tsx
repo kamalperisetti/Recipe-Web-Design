@@ -1,7 +1,9 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import "./index.css";
 import DisplayData from "../Displaydata";
-import Navbar from "../Navbar";
+// import Navbar from "../Navbar";
+// import { userSearch } from "../Navbar/index.tsx";
+
 type Data = {
   strMeal: string;
   strCategory: string;
@@ -14,7 +16,8 @@ const Home = () => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  console.log(fetchedData);
+  //   const searchInput = useContext(userSearch);
+  //   console.log(searchInput, "KII");
   useEffect(() => {
     getTheData();
   }, []);
@@ -116,7 +119,7 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div>
         <div className="background-image">
           {/* <img
