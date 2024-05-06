@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="search-container">
         <select className="select">
           <option>All Categories</option>
-          <option>Veg</option>
+          <option className="option">Veg</option>
           <option>Non-Veg</option>
         </select>
         <input

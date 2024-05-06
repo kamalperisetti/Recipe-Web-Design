@@ -119,14 +119,16 @@ const Home = () => {
       <Navbar />
       <div>
         <div className="background-image">
-          <img
+          {/* <img
             className="image-slide"
             src="https://s3-alpha-sig.figma.com/img/7d4e/3fa3/3b0de3e0090f8898c24f6e2c892fee6f?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aVeKlo1H-zR58DjqIQQIKe-CLji1cMJxotREYfAS8HGmieK45f9siTw6HD6gdUV7NNGhXXyutoO25JtKT0ywgIhDmxCKJf9dD5W2dM~6m534Sw8rx3ycY6ebfwb3UDhaEuOD1Fx7tvSc5p~LYcrHtueAPxjhaJzcdLrXYWrHY-7N~zfqawhVt1gK8fqBkxbvsTKc1yMsDVXJgCkKcn1ZGGxbqoCqGWDa4jX7umFLoNu2JkyxnSb5j8pUJAb8NBQJ8P3wibRubmFz1yGNX1~VoSHo8DPBVl5L~nt~74i0usWQa-LxcK5suGueD-B1SchKRPwhx4BVmIncRC-g~JRqiA__"
-          />
-          <div className="title-con">
-            <p className="trending">Treanding now</p>
-            <h3 className="heading">Mike's famous salad with cheese</h3>
-            <p className="author">By Jhone Mike</p>
+          /> */}
+          <div className="image-slide">
+            <div className="title-con">
+              <p className="trending">Treanding now</p>
+              <h3 className="heading">Mike's famous salad with cheese</h3>
+              <p className="author">By Jhone Mike</p>
+            </div>
           </div>
         </div>
         <div className="btn-container">

@@ -52,10 +52,10 @@ const DisplayData = (props: any) => {
         </div>
         <div className="link-container">
           <a href={details.strSource} target="_blank">
-            Blog <FaExternalLinkAlt style={{ fontSize: "10px" }} />
+            Blog <FaExternalLinkAlt style={{ fontSize: "7px" }} />
           </a>
           <a href={details.strYoutube} target="_blank">
-            Preparation Video <FaExternalLinkAlt style={{ fontSize: "10px" }} />
+            Preparation Video <FaExternalLinkAlt style={{ fontSize: "7px" }} />
           </a>
         </div>
 
@@ -89,9 +89,6 @@ const DisplayData = (props: any) => {
                 </button>
               </div>
             </Popup>
-            {/* <button className="heart-btn">
-              <FaRegComment onClick={addComment} />
-            </button> */}
           </div>
         </div>
       </div>

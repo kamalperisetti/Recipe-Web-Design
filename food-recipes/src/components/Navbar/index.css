@@ -97,3 +97,7 @@
     font-size: 10px;
   }
 }
+
+option {
+  height: 30px;
+}
