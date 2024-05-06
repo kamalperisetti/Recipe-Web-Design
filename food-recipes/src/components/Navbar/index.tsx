@@ -38,9 +38,9 @@ const Navbar = () => {
         <CiSearch className="search-icon" />
       </div>
       <div className="nav-options-section">
-        <p>Home</p>
-        <p>Explore</p>
-        <p>Help</p>
+        <p className="home">Home</p>
+        <p className="home">Explore</p>
+        <p className="home">Help</p>
       </div>
       <div>
         <img

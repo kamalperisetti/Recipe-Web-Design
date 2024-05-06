@@ -35,8 +35,8 @@
 }
 @media screen and (max-width: 768px) {
   .profile-img {
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     border-radius: 50%;
   }
 }
@@ -48,6 +48,7 @@
 @media screen and (max-width: 768px) {
   .search-container {
     height: 20px;
+    width: 154px;
   }
 }
 .search-icon {
@@ -80,7 +81,9 @@
 }
 @media screen and (max-width: 768px) {
   .select {
-    width: 100px;
+    font-size: 7px;
+    padding: 0px;
+    width: 68px;
   }
 }
 .input {
@@ -91,7 +94,7 @@
 @media screen and (max-width: 768px) {
   .input {
     border-width: 0px 0px 0px 0px;
-    width: 100px;
+    width: 65px;
   }
   .input::placeholder {
     font-size: 10px;
@@ -100,4 +103,10 @@
 
 option {
   height: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    font-size: 7px;
+  }
 }

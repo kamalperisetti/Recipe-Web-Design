@@ -144,30 +144,30 @@ const Home = () => {
       </div>
       <div className="main-container-with-sidebar">
         <div className="sidebar-container">
-          <div>
+          <div className="check-con">
             <input id="seafood" type="checkbox" onChange={getSeaFood} />
             <label htmlFor="seafood">Seafood</label>
           </div>
 
-          <div>
+          <div className="check-con">
             <input id="side" type="checkbox" onChange={getSideFood} />
             <label htmlFor="side">Side</label>
           </div>
 
-          <div>
+          <div className="check-con">
             <input id="beff" type="checkbox" onChange={getBeefFood} />
             <label htmlFor="beff">Beef</label>
           </div>
-          <div>
+          <div className="check-con">
             <input id="veg" type="checkbox" onChange={getVegFood} />
             <label htmlFor="veg">Vegetarian</label>
           </div>
 
-          <div>
+          <div className="check-con">
             <input id="pork" type="checkbox" onChange={getPorkFood} />
             <label htmlFor="pork">Pork</label>
           </div>
-          <div>
+          <div className="check-con">
             <input id="pasta" type="checkbox" onChange={getPastaFood} />
             <label htmlFor="pasta">Pasta</label>
           </div>

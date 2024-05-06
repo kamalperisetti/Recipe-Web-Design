@@ -9,8 +9,8 @@
 }
 @media screen and (max-width: 768px) {
   .image-slide {
-    height: 150px;
-    width: 450px;
+    height: 146px;
+    width: 328px;
   }
 }
 /* .image-slide {
@@ -75,7 +75,8 @@
 @media screen and (max-width: 768px) {
   .heading {
     font-size: 18px;
-    width: 350px;
+    width: 274px;
+    line-height: 18px;
   }
 }
 .author {
@@ -117,7 +118,7 @@
 }
 @media screen and (max-width: 768px) {
   .recipes-btn {
-    min-width: 80px;
+    max-width: 18%;
     height: 30px;
     font-size: 8px;
     padding: 3px;
@@ -136,7 +137,7 @@
 }
 @media screen and (max-width: 768px) {
   .Share-btn {
-    min-width: 80px;
+    max-width: 18%;
     height: 30px;
     font-size: 8px;
     padding: 3px;
@@ -155,7 +156,7 @@
 }
 @media screen and (max-width: 768px) {
   .Custom-btn {
-    min-width: 80px;
+    max-width: 18%;
     height: 30px;
     font-size: 8px;
     padding: 3px;
@@ -174,7 +175,7 @@
 }
 @media screen and (max-width: 768px) {
   .Create-btn {
-    min-width: 80px;
+    max-width: 18%;
     height: 30px;
     font-size: 8px;
     padding: 3px;
@@ -193,7 +194,7 @@
 }
 @media screen and (max-width: 768px) {
   .Cooking-btn {
-    min-width: 80px;
+    max-width: 18%;
     height: 30px;
     font-size: 8px;
     padding: 3px;
@@ -241,5 +242,12 @@
     flex-direction: column;
     gap: 10px;
     margin-top: 30px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .check-con {
+    display: flex;
+    align-items: center;
+    max-width: 70px;
   }
 }
