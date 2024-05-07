@@ -10,13 +10,14 @@ type Data = {
   strYoutube: string;
   idMeal: string;
 };
-// type Search = {
-//   searched: string;
-// };
+type Search = {
+  searched: string;
+  selectedItem?: string;
+};
 // type Select = {
 //   selected: string;
 // };
-const Home = (props: any) => {
+const Home = (props: Search) => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);
@@ -39,15 +40,6 @@ const Home = (props: any) => {
       each.strMeal.toLowerCase().includes(searched.toLowerCase())
     );
     setFilterdData(searchedData);
-    // if (selectedItem === "All Categories") {
-    //   setFilterdData(fetchedData);
-    // } else {
-    //   const filllter = fetchedData.filter(
-    //     (each) => each.strCategory === selectedItem
-    //   );
-    //   setFilterdData(filllter);
-    //   console.log(filllter);
-    // }
   }, [searched]);
 
   useEffect(() => {
