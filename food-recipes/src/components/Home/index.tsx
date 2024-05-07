@@ -21,6 +21,7 @@ const Home = (props: Search) => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);
+  const [serarchNotFound, setSearchNotFound] = useState(false);
   const { searched, selectedItem } = props;
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const Home = (props: Search) => {
         (each) => each.strCategory === selectedItem
       );
       setFilterdData(filllter);
+
       console.log(filllter);
     }
   }, [selectedItem]);
@@ -39,6 +41,13 @@ const Home = (props: Search) => {
     const searchedData = fetchedData.filter((each) =>
       each.strMeal.toLowerCase().includes(searched.toLowerCase())
     );
+    if (searchedData.length === 0) {
+      console.log("No Such Item Found");
+      setSearchNotFound(true);
+    } else {
+      setSearchNotFound(false);
+    }
+    console.log(searchedData);
     setFilterdData(searchedData);
   }, [searched]);
 
@@ -82,6 +91,10 @@ const Home = (props: Search) => {
         )
       );
     }
+  };
+
+  const retrySearching = () => {
+    setSearchNotFound(false);
   };
 
   return (
@@ -176,16 +189,34 @@ const Home = (props: Search) => {
             <label htmlFor="pasta">Pasta</label>
           </div>
         </div>
-        {fetchedData && (
-          <ul className="recipe-main-container">
-            {filterdData.length !== 0
-              ? filterdData.map((each) => (
-                  <DisplayData details={each} key={each.idMeal} />
-                ))
-              : fetchedData.map((each) => (
-                  <DisplayData details={each} key={each.idMeal} />
-                ))}
-          </ul>
+        {serarchNotFound ? (
+          <div className="not-found-container">
+            <div className="not-found">
+              <h6>No Such Item Found</h6>
+              <button className="retry-btn" onClick={retrySearching}>
+                Retry
+              </button>
+              <img
+                className="not-found-image"
+                src="https://elements-cover-images-0.imgix.net/41ce1856-ce64-47eb-9cc9-d50c75ba936b?auto=compress%2Cformat&w=900&fit=max&s=ba27396ca2b150afd778262eed2ec8af"
+                alt="No Item Found"
+              />
+            </div>
+          </div>
+        ) : (
+          <>
+            {fetchedData && (
+              <ul className="recipe-main-container">
+                {filterdData.length !== 0
+                  ? filterdData.map((each) => (
+                      <DisplayData details={each} key={each.idMeal} />
+                    ))
+                  : fetchedData.map((each) => (
+                      <DisplayData details={each} key={each.idMeal} />
+                    ))}
+              </ul>
+            )}
+          </>
         )}
       </div>
     </div>
