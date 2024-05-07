@@ -1,6 +1,7 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import "./index.css";
 import DisplayData from "../Displaydata";
+import InputContext from "../context/input";
 
 type Data = {
   strMeal: string;
@@ -11,19 +12,16 @@ type Data = {
   idMeal: string;
 };
 type Search = {
-  searched: string;
   selectedItem?: string;
 };
-// type Select = {
-//   selected: string;
-// };
+
 const Home = (props: Search) => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);
-  // const [serarchNotFound, setSearchNotFound] = useState(false);
-  //  const [searchedI, setSearchedI] = useState("");
-  const { searched, selectedItem } = props;
+  const [itemNotFound, setItemNotFound] = useState(false);
+  const { selectedItem } = props;
+  const { inputValue, setInputValue } = useContext(InputContext);
 
   useEffect(() => {
     if (selectedItem === "All Categories") {
@@ -33,24 +31,21 @@ const Home = (props: Search) => {
         (each) => each.strCategory === selectedItem
       );
       setFilterdData(filllter);
-
-      console.log(filllter);
     }
   }, [selectedItem]);
 
   useEffect(() => {
     const searchedData = fetchedData.filter((each) =>
-      each.strMeal.toLowerCase().includes(searched.toLowerCase())
+      each.strMeal.toLowerCase().includes(inputValue.toLowerCase())
     );
-    // if (searchedData.length === 0) {
-    //   console.log("No Such Item Found");
-    //   setSearchNotFound(true);
-    // } else {
-    //   setSearchNotFound(false);
-    // }
-    console.log(searchedData);
+
+    if (searchedData.length === 0 && inputValue.length !== 0) {
+      setItemNotFound(true);
+    } else {
+      setItemNotFound(false);
+    }
     setFilterdData(searchedData);
-  }, [searched]);
+  }, [inputValue]);
 
   useEffect(() => {
     getTheData();
@@ -94,9 +89,10 @@ const Home = (props: Search) => {
     }
   };
 
-  // const retrySearching = () => {
-  //   setSearchNotFound(false);
-  // };
+  const retrySearching = () => {
+    setItemNotFound(false);
+    setInputValue("");
+  };
 
   return (
     <div>
@@ -110,13 +106,6 @@ const Home = (props: Search) => {
             </div>
           </div>
         </div>
-        {/* <div className="btn-container">
-          <button className="recipes-btn">Recipes & Menus</button>
-          <button className="Share-btn">Share your recipe </button>
-          <button className="Custom-btn">Custom meal plan</button>
-          <button className="Create-btn">Create grocery list</button>
-          <button className="Cooking-btn">Cooking Tips & Tricks</button>
-        </div> */}
       </div>
       <div className="main-container-with-sidebar">
         <div className="sidebar-container">
@@ -190,7 +179,7 @@ const Home = (props: Search) => {
             <label htmlFor="pasta">Pasta</label>
           </div>
         </div>
-        {/* {serarchNotFound ? (
+        {itemNotFound ? (
           <div className="not-found-container">
             <div className="not-found">
               <h6>No Such Item Found</h6>
@@ -218,8 +207,8 @@ const Home = (props: Search) => {
               </ul>
             )}
           </>
-        )} */}
-        {fetchedData && (
+        )}
+        {/* {fetchedData && (
           <ul className="recipe-main-container">
             {filterdData.length !== 0
               ? filterdData.map((each) => (
@@ -229,7 +218,7 @@ const Home = (props: Search) => {
                   <DisplayData details={each} key={each.idMeal} />
                 ))}
           </ul>
-        )}
+        )} */}
       </div>
     </div>
   );

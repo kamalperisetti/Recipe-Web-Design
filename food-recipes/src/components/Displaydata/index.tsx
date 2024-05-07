@@ -7,6 +7,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import "./index.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+
 // type Data = {
 //   strMeal: string;
 //   strCategory: string;
@@ -15,32 +16,22 @@ import "reactjs-popup/dist/index.css";
 //   strYoutube: string;
 //   idMeal: string;
 // };
+
 const DisplayData = (props: any) => {
   const [heartIcon, setHeartIcon] = useState(false);
   const [popup, setPopup] = useState(false);
   const [commentText, setCommnetText] = useState("");
-  // const [likedRecipes, setLikedRecipes] = useState<Data[]>([]);
   const { details } = props;
-  // console.log(details);
-  // console.log(likedRecipes);
-
+  // const [likedVideos, setLikedVideos] = useState<Data[]>([]);
+  // console.log(likedVideos, "KIII");
   const changeHeart = () => {
+    // console.log(kill);
     setHeartIcon((prevState) => !prevState);
-    // setLikedRecipes((prevState) => [...prevState, likedDetails]);
+    // const dataaa = setLikedVideos((prevState) => [...prevState, kill]);
+    // console.log(likedVideos);
+    // console.log(dataaa);
   };
-  // const changeHeart = (d: Data) => {
-  //   setHeartIcon((prevState) => !prevState);
-  //   // const dummy = [...likedRecipes, d];
-  //   // console.log(dummy);
-  //   setLikedRecipes((prev) => [...prev, d]);
-  //   // if (!heartIcon) {
-  //   //   setLikedRecipes((prevState) => [...prevState, d]);
-  //   // } else {
-  //   //   setLikedRecipes((prevState) =>
-  //   //     prevState.filter((recipe) => recipe.idMeal !== d.idMeal)
-  //   //   );
-  //   // }
-  // };
+
   const addComment = () => {
     const comment = [];
     console.log(commentText);
