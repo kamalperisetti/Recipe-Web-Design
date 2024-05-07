@@ -22,6 +22,7 @@ const Home = (props: Search) => {
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);
   const [serarchNotFound, setSearchNotFound] = useState(false);
+  // const [searchedI, setSearchedI] = useState("");
   const { searched, selectedItem } = props;
 
   useEffect(() => {
@@ -41,12 +42,12 @@ const Home = (props: Search) => {
     const searchedData = fetchedData.filter((each) =>
       each.strMeal.toLowerCase().includes(searched.toLowerCase())
     );
-    if (searchedData.length === 0) {
-      console.log("No Such Item Found");
-      setSearchNotFound(true);
-    } else {
-      setSearchNotFound(false);
-    }
+    // if (searchedData.length === 0) {
+    //   console.log("No Such Item Found");
+    //   setSearchNotFound(true);
+    // } else {
+    //   setSearchNotFound(false);
+    // }
     console.log(searchedData);
     setFilterdData(searchedData);
   }, [searched]);
@@ -93,9 +94,9 @@ const Home = (props: Search) => {
     }
   };
 
-  const retrySearching = () => {
-    setSearchNotFound(false);
-  };
+  // const retrySearching = () => {
+  //   setSearchNotFound(false);
+  // };
 
   return (
     <div>
@@ -193,9 +194,9 @@ const Home = (props: Search) => {
           <div className="not-found-container">
             <div className="not-found">
               <h6>No Such Item Found</h6>
-              <button className="retry-btn" onClick={retrySearching}>
+              {/* <button className="retry-btn" onClick={retrySearching}>
                 Retry
-              </button>
+              </button> */}
               <img
                 className="not-found-image"
                 src="https://elements-cover-images-0.imgix.net/41ce1856-ce64-47eb-9cc9-d50c75ba936b?auto=compress%2Cformat&w=900&fit=max&s=ba27396ca2b150afd778262eed2ec8af"
