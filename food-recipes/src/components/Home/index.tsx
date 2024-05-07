@@ -22,7 +22,7 @@ const Home = (props: Search) => {
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);
   const [serarchNotFound, setSearchNotFound] = useState(false);
-  // const [searchedI, setSearchedI] = useState("");
+  //  const [searchedI, setSearchedI] = useState("");
   const { searched, selectedItem } = props;
 
   useEffect(() => {
