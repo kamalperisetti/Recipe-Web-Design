@@ -30,13 +30,16 @@ const DisplayData = (props: any) => {
   };
   // const changeHeart = (d: Data) => {
   //   setHeartIcon((prevState) => !prevState);
-  //   if (!heartIcon) {
-  //     setLikedRecipes((prevState) => [...prevState, d]);
-  //   } else {
-  //     setLikedRecipes((prevState) =>
-  //       prevState.filter((recipe) => recipe.idMeal !== d.idMeal)
-  //     );
-  //   }
+  //   // const dummy = [...likedRecipes, d];
+  //   // console.log(dummy);
+  //   setLikedRecipes((prev) => [...prev, d]);
+  //   // if (!heartIcon) {
+  //   //   setLikedRecipes((prevState) => [...prevState, d]);
+  //   // } else {
+  //   //   setLikedRecipes((prevState) =>
+  //   //     prevState.filter((recipe) => recipe.idMeal !== d.idMeal)
+  //   //   );
+  //   // }
   // };
   const addComment = () => {
     const comment = [];

@@ -2,12 +2,16 @@ import { IoIosMenu } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import "./index.css";
 
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Home from "../Home";
 
 const Navbar = () => {
   const [searchInput, setSearchInput] = useState<string>("");
+  const [selected, setSelected] = useState("All");
   // const profileSection = () => {};
+  const selectedSection = (e: ChangeEvent<HTMLSelectElement>) => {
+    setSelected(e.target.value);
+  };
   return (
     <div>
       <div className="nav-container">
@@ -21,12 +25,13 @@ const Navbar = () => {
         </div>
 
         <div className="search-container">
-          <select className="select">
+          <select className="select" onChange={(e) => selectedSection(e)}>
             <option value="All Category">All Categories</option>
-            <option value="Veg" className="option">
-              Veg
+            <option value="Vegetarian" className="option">
+              Vegetarian
             </option>
-            <option value="Non-veg">Non-Veg</option>
+            <option value="Beef">Beef</option>
+            <option value="Pork">Pork</option>
           </select>
           <input
             className="input"
@@ -49,7 +54,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <Home searched={searchInput} />
+      <Home searched={searchInput} selectedItem={selected} />
     </div>
   );
 };

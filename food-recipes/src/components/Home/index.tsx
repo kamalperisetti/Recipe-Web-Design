@@ -10,19 +10,44 @@ type Data = {
   strYoutube: string;
   idMeal: string;
 };
-type Search = {
-  searched: string;
-};
-const Home = (props: Search) => {
+// type Search = {
+//   searched: string;
+// };
+// type Select = {
+//   selected: string;
+// };
+const Home = (props: any) => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);
-  const { searched } = props;
+  const { searched, selectedItem } = props;
+
+  useEffect(() => {
+    if (selectedItem === "All Categories") {
+      setFilterdData(fetchedData);
+    } else {
+      const filllter = fetchedData.filter(
+        (each) => each.strCategory === selectedItem
+      );
+      setFilterdData(filllter);
+      console.log(filllter);
+    }
+  }, [selectedItem]);
+
   useEffect(() => {
     const searchedData = fetchedData.filter((each) =>
       each.strMeal.toLowerCase().includes(searched.toLowerCase())
     );
     setFilterdData(searchedData);
+    // if (selectedItem === "All Categories") {
+    //   setFilterdData(fetchedData);
+    // } else {
+    //   const filllter = fetchedData.filter(
+    //     (each) => each.strCategory === selectedItem
+    //   );
+    //   setFilterdData(filllter);
+    //   console.log(filllter);
+    // }
   }, [searched]);
 
   useEffect(() => {
@@ -79,13 +104,13 @@ const Home = (props: Search) => {
             </div>
           </div>
         </div>
-        <div className="btn-container">
+        {/* <div className="btn-container">
           <button className="recipes-btn">Recipes & Menus</button>
           <button className="Share-btn">Share your recipe </button>
           <button className="Custom-btn">Custom meal plan</button>
           <button className="Create-btn">Create grocery list</button>
           <button className="Cooking-btn">Cooking Tips & Tricks</button>
-        </div>
+        </div> */}
       </div>
       <div className="main-container-with-sidebar">
         <div className="sidebar-container">
