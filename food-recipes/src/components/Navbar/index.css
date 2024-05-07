@@ -94,8 +94,9 @@
 }
 @media screen and (max-width: 768px) {
   .input {
-    border-width: 0px 0px 0px 0px;
+    border: none;
     width: 65px;
+    padding: 0px;
   }
   .input::placeholder {
     font-size: 10px;
