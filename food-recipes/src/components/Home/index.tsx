@@ -21,7 +21,7 @@ const Home = (props: Search) => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);
-  const [serarchNotFound, setSearchNotFound] = useState(false);
+  // const [serarchNotFound, setSearchNotFound] = useState(false);
   //  const [searchedI, setSearchedI] = useState("");
   const { searched, selectedItem } = props;
 
@@ -190,13 +190,13 @@ const Home = (props: Search) => {
             <label htmlFor="pasta">Pasta</label>
           </div>
         </div>
-        {serarchNotFound ? (
+        {/* {serarchNotFound ? (
           <div className="not-found-container">
             <div className="not-found">
               <h6>No Such Item Found</h6>
-              {/* <button className="retry-btn" onClick={retrySearching}>
+              <button className="retry-btn" onClick={retrySearching}>
                 Retry
-              </button> */}
+              </button>
               <img
                 className="not-found-image"
                 src="https://elements-cover-images-0.imgix.net/41ce1856-ce64-47eb-9cc9-d50c75ba936b?auto=compress%2Cformat&w=900&fit=max&s=ba27396ca2b150afd778262eed2ec8af"
@@ -218,6 +218,17 @@ const Home = (props: Search) => {
               </ul>
             )}
           </>
+        )} */}
+        {fetchedData && (
+          <ul className="recipe-main-container">
+            {filterdData.length !== 0
+              ? filterdData.map((each) => (
+                  <DisplayData details={each} key={each.idMeal} />
+                ))
+              : fetchedData.map((each) => (
+                  <DisplayData details={each} key={each.idMeal} />
+                ))}
+          </ul>
         )}
       </div>
     </div>
