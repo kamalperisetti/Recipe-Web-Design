@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa";
@@ -7,31 +7,39 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import "./index.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-
-// type Data = {
-//   strMeal: string;
-//   strCategory: string;
-//   strMealThumb: string;
-//   strSource: string;
-//   strYoutube: string;
-//   idMeal: string;
-// };
+import InputContext from "../context/input";
+import { FaBookmark } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
+type Data = {
+  strMeal: string;
+  strCategory: string;
+  strMealThumb: string;
+  strSource: string;
+  strYoutube: string;
+  idMeal: string;
+};
 
 const DisplayData = (props: any) => {
   const [heartIcon, setHeartIcon] = useState(false);
   const [popup, setPopup] = useState(false);
   const [commentText, setCommnetText] = useState("");
+  const { likedVideo, setLikedVideo } = useContext(InputContext);
   const { details } = props;
-  // const [likedVideos, setLikedVideos] = useState<Data[]>([]);
-  // console.log(likedVideos, "KIII");
   const changeHeart = () => {
-    // console.log(kill);
     setHeartIcon((prevState) => !prevState);
-    // const dataaa = setLikedVideos((prevState) => [...prevState, kill]);
-    // console.log(likedVideos);
-    // console.log(dataaa);
   };
 
+  const notify = (kill: Data) => {
+    toast(`${kill.strMeal} Recipe is Added to Profile`);
+    console.log("added");
+    const alreadyPresent = likedVideo.find(
+      (each) => each.idMeal === kill.idMeal
+    );
+    console.log(alreadyPresent);
+    if (!alreadyPresent) {
+      setLikedVideo((prevState) => [...prevState, kill]);
+    }
+  };
   const addComment = () => {
     const comment = [];
     console.log(commentText);
@@ -98,6 +106,10 @@ const DisplayData = (props: any) => {
             </Popup>
           </div>
         </div>
+      </div>
+      <div className="save-con" onClick={() => notify(details)}>
+        <FaBookmark className="save-icon" />
+        <Toaster />
       </div>
     </li>
   );

@@ -1,5 +1,47 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .profile-section-img {
-  height: 55px;
-  width: 55px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
+}
+.home-btn {
+  background-color: blueviolet;
+  border: none;
+  padding: 4px;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 6px;
+}
+.user-name {
+  font-size: 18px;
+}
+@media screen and (max-width: 768px) {
+  .user-name {
+    font-size: 10px;
+  }
+}
+.saved-title {
+  font-size: 14px;
+  text-align: center;
+  text-decoration: underline;
+  color: rgb(99, 99, 140);
+  margin-left: 80px;
+}
+@media screen and (max-width: 768px) {
+  .saved-title {
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .profile-section-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-top: 20px;
+  }
 }

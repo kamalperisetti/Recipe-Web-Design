@@ -1,9 +1,9 @@
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import InputContext from "./components/context/input";
-// import Profile from "./components/profile";
+import Profile from "./components/profile";
 
 // function App() {
 //   return (
@@ -18,11 +18,20 @@ import InputContext from "./components/context/input";
 //     </div>
 //   );
 // }
+type Data = {
+  strMeal: string;
+  strCategory: string;
+  strMealThumb: string;
+  strSource: string;
+  strYoutube: string;
+  idMeal: string;
+};
 
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [menuIcon, setMenuIcon] = useState(false);
+  const [likedVideo, setLikedVideo] = useState<Data[]>([]);
   return (
     <InputContext.Provider
       value={{
@@ -32,13 +41,21 @@ function App() {
         setSelected,
         menuIcon,
         setMenuIcon,
+        likedVideo,
+        setLikedVideo,
       }}
     >
-      <div className="app">
-        <Navbar />
-        {/* <Route path="/" element={} /> */}
-        {/* <Route path="/profile" element={<Profile />} /> */}
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Navbar />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </BrowserRouter>
       </div>
+      {/* <div className="app">
+        <Navbar />
+      </div> */}
     </InputContext.Provider>
   );
 }
