@@ -95,8 +95,8 @@ const DisplayData = (props: any) => {
               <div className="popup-container">
                 <textarea
                   placeholder="Add Comments here...."
-                  cols={50}
-                  rows={30}
+                  cols={30}
+                  rows={10}
                   onChange={(e) => setCommnetText(e.target.value)}
                 ></textarea>
                 <button className="comment-btn" onClick={addComment}>
