@@ -22,9 +22,17 @@ import InputContext from "./components/context/input";
 function App() {
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
+  const [menuIcon, setMenuIcon] = useState(false);
   return (
     <InputContext.Provider
-      value={{ inputValue, setInputValue, selected, setSelected }}
+      value={{
+        inputValue,
+        setInputValue,
+        selected,
+        setSelected,
+        menuIcon,
+        setMenuIcon,
+      }}
     >
       <div className="app">
         <Navbar />

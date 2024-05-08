@@ -27,7 +27,10 @@
 /* @media screen and (max-width:768px) {
     
 } */
-
+.menu-btn {
+  border: none;
+  background-color: transparent;
+}
 .profile-img {
   height: 30px;
   width: 30px;

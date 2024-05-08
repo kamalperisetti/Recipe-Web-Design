@@ -9,7 +9,9 @@ import InputContext from "../context/input";
 const Navbar = () => {
   // const [selected, setSelected] = useState("All");
   const { inputValue, setInputValue } = useContext(InputContext);
-  const { selected, setSelected } = useContext(InputContext);
+  const { setSelected } = useContext(InputContext);
+  const { setMenuIcon } = useContext(InputContext);
+
   const searchInputeValue = (e: any) => {
     setInputValue(e.target.value);
   };
@@ -17,11 +19,15 @@ const Navbar = () => {
     setSelected(e.target.value);
     console.log(e.target.value);
   };
+  const hideMenuItems = () => {
+    setMenuIcon((prevState) => !prevState);
+  };
   return (
     <div>
       <div className="nav-container">
         <div className="logo-container">
-          <IoIosMenu />
+          <IoIosMenu className="menu-btn" onClick={hideMenuItems} />
+
           <img
             className="logo-img"
             src="https://s3-alpha-sig.figma.com/img/e0ef/4f61/967cc7d034dc411ca2013fff2fed228d?Expires=1715558400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=d3MQUsPYKo4Dubv3o4FvjG4xSRhw~T5yOZAYw6G9V7mZG3PM26Rj81UdjMxiTxgUOxbdq-HHP8fPOhjWVj9e8pQsaCs-XQ093pVdZfjFda9kfjUOFXyj0YP-otR-mQQ6ZvrHPyTqkklOzJMog73XkzJ8uHM174uUExG4BkmTEqXqTM0N1W07~fdWkG8fjoPHiIU8cYEokJxSXg~MeQMlpKgwJrdP1sKtP8~bDhIzsGHJ~zIWs15Lc6VWzb62hCE9ZNL5YtbryzfiPefY04tuqR5XF6rO4EFkdbT0UwXjFbBCIQ6cPgCDK5hUdZw6WuZJI1qyCDW1JG9rPIOz2A-FBg__"
@@ -58,7 +64,7 @@ const Navbar = () => {
           />
         </div>
       </div>
-      <Home selectedItem={selected} />
+      <Home />
     </div>
   );
 };

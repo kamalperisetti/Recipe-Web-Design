@@ -11,30 +11,30 @@ type Data = {
   strYoutube: string;
   idMeal: string;
 };
-type Search = {
-  selectedItem: string;
-};
+// type Search = {
+//   selectedItem: string;
+// };
 
-const Home = (props: Search) => {
+const Home = () => {
   const [fetchedData, setFetchedData] = useState<Data[]>([]);
   const [filterdData, setFilterdData] = useState<Data[]>([]);
   const [selectedData, setSelectedData] = useState<string[]>([]);
   const [itemNotFound, setItemNotFound] = useState(false);
-  const { selectedItem } = props;
+  // const { selectedItem } = props;
   const { inputValue, setInputValue } = useContext(InputContext);
+  const { menuIcon } = useContext(InputContext);
   const { selected } = useContext(InputContext);
-
-  console.log(selected);
+  // console.log(selectedItem);
   useEffect(() => {
-    if (selectedItem === "All Categories") {
+    if (selected === "All Categories") {
       setFilterdData(fetchedData);
     } else {
       const filllter = fetchedData.filter(
-        (each) => each.strCategory === selectedItem
+        (each) => each.strCategory === selected
       );
       setFilterdData(filllter);
     }
-  }, [selectedItem]);
+  }, [selected]);
 
   useEffect(() => {
     const searchedData = fetchedData.filter((each) =>
@@ -70,7 +70,7 @@ const Home = (props: Search) => {
   };
 
   const getTheValue = (e: ChangeEvent<HTMLInputElement>) => {
-    if (selectedItem !== e.target.value) {
+    if (selected !== e.target.value) {
       if (e.target.checked) {
         setSelectedData((prevState) => [...prevState, e.target.value]);
         setFilterdData((prev) => [
@@ -111,77 +111,80 @@ const Home = (props: Search) => {
         </div>
       </div>
       <div className="main-container-with-sidebar">
-        <div className="sidebar-container">
-          <div className="check-con">
-            <input
-              id="seafood"
-              type="checkbox"
-              value="Seafood"
-              onChange={(e) => {
-                getTheValue(e);
-              }}
-            />
-            <label htmlFor="seafood">Seafood</label>
-          </div>
+        {menuIcon && (
+          <div className="sidebar-container">
+            <div className="check-con">
+              <input
+                id="seafood"
+                type="checkbox"
+                value="Seafood"
+                onChange={(e) => {
+                  getTheValue(e);
+                }}
+              />
+              <label htmlFor="seafood">Seafood</label>
+            </div>
 
-          <div className="check-con">
-            <input
-              id="side"
-              type="checkbox"
-              value="Side"
-              onChange={(e) => {
-                getTheValue(e);
-              }}
-            />
-            <label htmlFor="side">Side</label>
-          </div>
+            <div className="check-con">
+              <input
+                id="side"
+                type="checkbox"
+                value="Side"
+                onChange={(e) => {
+                  getTheValue(e);
+                }}
+              />
+              <label htmlFor="side">Side</label>
+            </div>
 
-          <div className="check-con">
-            <input
-              id="beff"
-              type="checkbox"
-              value="Beef"
-              onChange={(e) => {
-                getTheValue(e);
-              }}
-            />
-            <label htmlFor="beff">Beef</label>
-          </div>
-          <div className="check-con">
-            <input
-              id="veg"
-              value="Vegetarian"
-              type="checkbox"
-              onChange={(e) => {
-                getTheValue(e);
-              }}
-            />
-            <label htmlFor="veg">Vegetarian</label>
-          </div>
+            <div className="check-con">
+              <input
+                id="beff"
+                type="checkbox"
+                value="Beef"
+                onChange={(e) => {
+                  getTheValue(e);
+                }}
+              />
+              <label htmlFor="beff">Beef</label>
+            </div>
+            <div className="check-con">
+              <input
+                id="veg"
+                value="Vegetarian"
+                type="checkbox"
+                onChange={(e) => {
+                  getTheValue(e);
+                }}
+              />
+              <label htmlFor="veg">Vegetarian</label>
+            </div>
 
-          <div className="check-con">
-            <input
-              id="pork"
-              type="checkbox"
-              value="Pork"
-              onChange={(e) => {
-                getTheValue(e);
-              }}
-            />
-            <label htmlFor="pork">Pork</label>
+            <div className="check-con">
+              <input
+                id="pork"
+                type="checkbox"
+                value="Pork"
+                onChange={(e) => {
+                  getTheValue(e);
+                }}
+              />
+              <label htmlFor="pork">Pork</label>
+            </div>
+            <div className="check-con">
+              <input
+                id="pasta"
+                type="checkbox"
+                value="Pasta"
+                onChange={(e) => {
+                  getTheValue(e);
+                }}
+              />
+              <label htmlFor="pasta">Pasta</label>
+            </div>
           </div>
-          <div className="check-con">
-            <input
-              id="pasta"
-              type="checkbox"
-              value="Pasta"
-              onChange={(e) => {
-                getTheValue(e);
-              }}
-            />
-            <label htmlFor="pasta">Pasta</label>
-          </div>
-        </div>
+        )}
+
         {itemNotFound ? (
           <div className="not-found-container">
             <div className="not-found">
