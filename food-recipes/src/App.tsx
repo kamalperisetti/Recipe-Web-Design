@@ -21,8 +21,11 @@ import InputContext from "./components/context/input";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
+  const [selected, setSelected] = useState("");
   return (
-    <InputContext.Provider value={{ inputValue, setInputValue }}>
+    <InputContext.Provider
+      value={{ inputValue, setInputValue, selected, setSelected }}
+    >
       <div className="app">
         <Navbar />
         {/* <Route path="/" element={} /> */}

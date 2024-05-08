@@ -12,7 +12,7 @@ type Data = {
   idMeal: string;
 };
 type Search = {
-  selectedItem?: string;
+  selectedItem: string;
 };
 
 const Home = (props: Search) => {
@@ -22,7 +22,9 @@ const Home = (props: Search) => {
   const [itemNotFound, setItemNotFound] = useState(false);
   const { selectedItem } = props;
   const { inputValue, setInputValue } = useContext(InputContext);
+  const { selected } = useContext(InputContext);
 
+  console.log(selected);
   useEffect(() => {
     if (selectedItem === "All Categories") {
       setFilterdData(fetchedData);
@@ -38,7 +40,6 @@ const Home = (props: Search) => {
     const searchedData = fetchedData.filter((each) =>
       each.strMeal.toLowerCase().includes(inputValue.toLowerCase())
     );
-
     if (searchedData.length === 0 && inputValue.length !== 0) {
       setItemNotFound(true);
     } else {
@@ -69,23 +70,25 @@ const Home = (props: Search) => {
   };
 
   const getTheValue = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.checked) {
-      setSelectedData((prevState) => [...prevState, e.target.value]);
-      setFilterdData((prev) => [
-        ...prev,
-        ...fetchedData.filter((each) => each.strCategory === e.target.value),
-      ]);
-    } else {
-      setSelectedData((prevState) =>
-        prevState.filter((each) => each !== e.target.value)
-      );
-      setFilterdData((prev) =>
-        prev.filter(
-          (each) =>
-            each.strCategory !== e.target.value &&
-            selectedData.includes(each.strCategory)
-        )
-      );
+    if (selectedItem !== e.target.value) {
+      if (e.target.checked) {
+        setSelectedData((prevState) => [...prevState, e.target.value]);
+        setFilterdData((prev) => [
+          ...prev,
+          ...fetchedData.filter((each) => each.strCategory === e.target.value),
+        ]);
+      } else {
+        setSelectedData((prevState) =>
+          prevState.filter((each) => each !== e.target.value)
+        );
+        setFilterdData((prev) =>
+          prev.filter(
+            (each) =>
+              each.strCategory !== e.target.value &&
+              selectedData.includes(each.strCategory)
+          )
+        );
+      }
     }
   };
 
@@ -208,17 +211,6 @@ const Home = (props: Search) => {
             )}
           </>
         )}
-        {/* {fetchedData && (
-          <ul className="recipe-main-container">
-            {filterdData.length !== 0
-              ? filterdData.map((each) => (
-                  <DisplayData details={each} key={each.idMeal} />
-                ))
-              : fetchedData.map((each) => (
-                  <DisplayData details={each} key={each.idMeal} />
-                ))}
-          </ul>
-        )} */}
       </div>
     </div>
   );

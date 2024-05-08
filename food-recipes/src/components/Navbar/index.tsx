@@ -2,18 +2,20 @@ import { IoIosMenu } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import "./index.css";
 
-import { ChangeEvent, useState, useContext } from "react";
+import { ChangeEvent, useContext } from "react";
 import Home from "../Home";
 import InputContext from "../context/input";
 
 const Navbar = () => {
-  const [selected, setSelected] = useState("All");
+  // const [selected, setSelected] = useState("All");
   const { inputValue, setInputValue } = useContext(InputContext);
+  const { selected, setSelected } = useContext(InputContext);
   const searchInputeValue = (e: any) => {
     setInputValue(e.target.value);
   };
   const selectedSection = (e: ChangeEvent<HTMLSelectElement>) => {
     setSelected(e.target.value);
+    console.log(e.target.value);
   };
   return (
     <div>
